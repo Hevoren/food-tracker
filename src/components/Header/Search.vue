@@ -18,7 +18,7 @@
 
 <script>
 export default {
-  name: 'HelloWorld',
+  name: 'SearchInput',
   data() {
     return {
       showInput: false,
