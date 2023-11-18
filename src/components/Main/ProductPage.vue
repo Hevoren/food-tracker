@@ -8,7 +8,7 @@ export default {
 <div>
   <div class="product">
     <div class="product-item">
-      <p>Title</p>
+      <h1>Title</h1>
       <p>Kcal</p>
       <p>Weight</p>
       <p>Protein</p>
@@ -39,5 +39,11 @@ export default {
   margin-left: 15px;
   color: white;
   font-size: 14px;
+}
+
+h1 {
+  background-color: #851818;
+  margin-left: 15px;
+  color: white;
 }
 </style>
