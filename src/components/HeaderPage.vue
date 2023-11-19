@@ -12,8 +12,8 @@ export default {
 <template>
   <div class="header">
     <div class="menu">
-      <a href="#">Products</a>
-      <a href="#">Days</a>
+      <a href="#">Продукты</a>
+      <a href="#">Дни</a>
     </div>
     <div>
       <Search/>

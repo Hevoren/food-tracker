@@ -44,7 +44,7 @@ export default {
     </div>
     <div class="add-product-button">
       <button @click="addProduct">
-        Add Product
+        Добавить продукт
       </button>
     </div>
   </div>
@@ -83,18 +83,6 @@ export default {
 button:hover {
   cursor: pointer;
   color: #851818;
-}
-
-.add-product {
-  opacity: 0;
-  height: 0;
-  overflow: hidden;
-  transition: opacity 0.5s ease, height 0.5s ease;
-}
-
-.add-product:active {
-  opacity: 1; /* При появлении элемента с классом active, делаем его видимым */
-  height: auto; /* Автоматическая высота элемента */
 }
 
 </style>

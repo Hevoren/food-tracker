@@ -19,12 +19,12 @@ export default {
   <div @click="closeForm" :class="{ 'form-product-bg': formVisible }">
     <div class="form-product" @click.stop>
       <form>
-        <input type="text" name="input" value="Title">
-        <input type="text" name="kcal" value="Kcal">
-        <input type="text" name="weight" value="Weight">
-        <input type="text" name="protein" value="Protein">
-        <input type="text" name="fats" value="Fats">
-        <input type="text" name="carbohydrates" value="Carbohydrates">
+        <input type="text" name="input" placeholder="Название">
+        <input type="text" name="kcal" placeholder="Каллорийность">
+        <input type="text" name="weight" placeholder="Вес">
+        <input type="text" name="protein" placeholder="Белки">
+        <input type="text" name="fats" placeholder="Жиры">
+        <input type="text" name="carbohydrates" placeholder="Углеводы">
         <button type="submit">Add</button>
       </form>
     </div>
@@ -51,10 +51,40 @@ form {
 }
 
 .form-product input {
+  color: black;
+  font-size: 16px;
   background: none;
   outline: none;
   border: none;
+  height: 60px;
+  width: 80%;
   border-bottom: 1px solid black;
+  font-weight: bold;
+}
+
+.form-product button {
+  height: 40px;
+  width: 80%;
+  background-color: black;
+  border: none;
+  border-radius: 15px;
+  margin-top: 20px;
+  color: white;
+  font-size: 20px;
+  transition: .8s ease;
+}
+
+.form-product button:hover {
+  transition: .8s ease;
+  background-color: white;
+  color: black;
+  cursor: pointer;
+}
+
+.form-product input::placeholder {
+  color: black;
+  opacity: 0.5;
+  font-weight: normal;
 }
 
 .form-product-bg {

@@ -8,12 +8,12 @@ export default {
 <div>
   <div class="product">
     <div class="product-item">
-      <h1>Title</h1>
-      <p>Kcal</p>
-      <p>Weight</p>
-      <p>Protein</p>
-      <p>Fats</p>
-      <p>Carbohydrates</p>
+      <h1>Название</h1>
+      <p>Каллорийность</p>
+      <p>Вес</p>
+      <p>Белки</p>
+      <p>Жиры</p>
+      <p>Углеводы</p>
     </div>
   </div>
 </div>
