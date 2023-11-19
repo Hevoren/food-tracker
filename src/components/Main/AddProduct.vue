@@ -1,21 +1,22 @@
 <script>
 export default {
   name: 'AddProduct',
-  data() {
-    return {
-      formVisible: true
-    }
-  },
   methods: {
     closeForm() {
       this.emitter.emit('formVisible', false)
+    }
+  },
+  props: {
+    formVisible: {
+      type: Boolean,
+      required: true
     }
   }
 }
 </script>
 
 <template>
-  <div v-show="formVisible" @click="closeForm" class="form-product-bg">
+  <div @click="closeForm" :class="{ 'form-product-bg': formVisible }">
     <div class="form-product" @click.stop>
       <form>
         <input type="text" name="input" value="Title">
@@ -31,9 +32,8 @@ export default {
 </template>
 
 <style scoped>
+
 .form-product {
-  z-index: 9999999;
-  position: relative;
   display: flex;
   width: 400px;
   height: 500px;
@@ -41,11 +41,11 @@ export default {
 
 form {
   display: flex;
+  flex-direction: column;
   width: 100%;
   height: 100%;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
   background-color: #851818;
   border-radius: 15px;
 }
@@ -54,6 +54,7 @@ form {
   background: none;
   outline: none;
   border: none;
+  border-bottom: 1px solid black;
 }
 
 .form-product-bg {
@@ -65,9 +66,9 @@ form {
   left: 0;
   background-color: rgba(0, 0, 0, 0.7);
   display: flex;
-  transition: opacity 0.3s ease;
   justify-content: center;
   align-items: center;
 }
+
 
 </style>

@@ -15,7 +15,7 @@ export default {
 
 <template>
   <div>
-    <ProductsPage class="product-page"/>
+    <ProductsPage/>
   </div>
 </template>
 

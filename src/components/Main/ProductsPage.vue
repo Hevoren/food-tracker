@@ -30,7 +30,7 @@ export default {
 
 <template>
   <div class="products">
-    <div class="wrapper">
+    <div class="wrapper-products">
       <ProductPage/>
       <ProductPage/>
       <ProductPage/>
@@ -42,19 +42,19 @@ export default {
       <ProductPage/>
       <ProductPage/>
     </div>
-    <div class="add-product">
+    <div class="add-product-button">
       <button @click="addProduct">
         Add Product
       </button>
     </div>
   </div>
-  <div>
-    <AddProduct :property="formVisible" v-show="formVisible"/>
+  <div v-if="formVisible">
+    <AddProduct :formVisible="formVisible"/>
   </div>
 </template>
 
 <style scoped>
-.wrapper {
+.wrapper-products {
   display: grid;
   align-items: center;
   grid-template-columns: 250px 250px 250px 250px 250px 250px;
@@ -66,13 +66,13 @@ export default {
   flex-direction: column;
 }
 
-.add-product {
+.add-product-button {
   margin-top: 20px;
   display: flex;
   justify-content: center;
 }
 
-.add-product button {
+.add-product-button button {
   font-size: 25px;
   color: white;
   background: none;
@@ -85,16 +85,16 @@ button:hover {
   color: #851818;
 }
 
-
-.product-form-background {
-  position: fixed;
-  z-index: 9998;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
-  display: table;
-  transition: opacity 0.3s ease;
+.add-product {
+  opacity: 0;
+  height: 0;
+  overflow: hidden;
+  transition: opacity 0.5s ease, height 0.5s ease;
 }
+
+.add-product:active {
+  opacity: 1; /* При появлении элемента с классом active, делаем его видимым */
+  height: auto; /* Автоматическая высота элемента */
+}
+
 </style>
