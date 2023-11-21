@@ -1,30 +1,69 @@
 <script>
+import { setItem, getItem } from "@/helpers/persistanceStorage";
+
 export default {
   name: 'AddProduct',
-  methods: {
-    closeForm() {
-      this.emitter.emit('formVisible', false)
-    }
-  },
   props: {
     formVisible: {
       type: Boolean,
-      required: true
+          required: true
+    }
+  },
+  data() {
+    return {
+      products: {
+        title: '',
+        kcal: '',
+        weight: '',
+        proteins: '',
+        fats: '',
+        carbohydrates: '',
+      }
+    }
+  },
+  methods: {
+    closeForm() {
+      this.emitter.emit('formVisible', false)
+    },
+    onSubmit() {
+      this.products = {
+        title: '',
+        kcal: '',
+        weight: '',
+        proteins: '',
+        fats: '',
+        carbohydrates: '',
+      };
+      this.closeForm()
+    },
+    saveProductToLocalStorage() {
+      setItem('products', JSON.stringify(this.products))
+    }
+  },
+  watch: {
+    products: {
+      handler: 'saveProductToLocalStorage',
+      deep: true
+    }
+  },
+  mounted() {
+    if (getItem('products')) {
+      this.products = JSON.parse(getItem('products'))
     }
   }
 }
 </script>
 
 <template>
-  <div @click="closeForm" :class="{ 'form-product-bg': formVisible }">
+  <div @click="closeForm" :class="{ 'form-product-bg': this.formVisible }">
     <div class="form-product" @click.stop>
-      <form>
-        <input type="text" name="input" placeholder="Название">
-        <input type="text" name="kcal" placeholder="Каллорийность">
-        <input type="text" name="weight" placeholder="Вес">
-        <input type="text" name="protein" placeholder="Белки">
-        <input type="text" name="fats" placeholder="Жиры">
-        <input type="text" name="carbohydrates" placeholder="Углеводы">
+      <form action="/" @submit.prevent="onSubmit">
+        <input type="text" name="input" placeholder="Название" v-model="products.title">
+        <input type="text" name="kcal" placeholder="Каллорийность" v-model="products.kcal">
+        <input type="text" name="weight" placeholder="Вес" v-model="products.weight">
+        <input type="text" name="protein" placeholder="Белки" v-model="products.proteins">
+        <input type="text" name="fats" placeholder="Жиры" v-model="products.fats">
+        <input type="text" name="carbohydrates" placeholder="Углеводы" v-model="products.carbohydrates">
         <button type="submit">Add</button>
       </form>
     </div>
@@ -83,8 +122,7 @@ form {
 
 .form-product input::placeholder {
   color: black;
-  opacity: 0.5;
-  font-weight: normal;
+  font-weight: bold;
 }
 
 .form-product-bg {

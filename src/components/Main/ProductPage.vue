@@ -32,6 +32,7 @@ export default {
 
 .product-item {
   background-color: #851818;
+  border-radius: 10px;
 }
 
 .product-item > p {
